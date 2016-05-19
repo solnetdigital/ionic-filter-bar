@@ -17,7 +17,7 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
               '<div class="bar bar-header bar-{{::config.theme}} item-input-inset">' +
                 '<button class="filter-bar-cancel button button-icon icon {{::config.back}}"></button>' +
                 '<label class="item-input-wrapper">' +
-                  '<input type="search" class="filter-bar-search" ng-model="data.filterText" placeholder="{{::config.placeholder}}" />' +
+                  '<input type="search" class="filter-bar-search" ng-model="data.filterText" placeholder="{{config.placeholder}}" />' +
                   '<button class="filter-bar-clear button button-icon icon" ng-class="getClearButtonClass()"></button>' +
                 '</label>' +
               '</div>' +
@@ -28,10 +28,10 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
               '<div class="bar bar-header bar-{{::config.theme}} item-input-inset">' +
                 '<label class="item-input-wrapper">' +
                   '<i class="icon {{::config.search}} placeholder-icon"></i>' +
-                  '<input type="search" class="filter-bar-search" ng-model="data.filterText" placeholder="{{::config.placeholder}}"/>' +
+                  '<input type="search" class="filter-bar-search" ng-model="data.filterText" placeholder="{{config.placeholder}}"/>' +
                   '<button class="filter-bar-clear button button-icon icon" ng-class="getClearButtonClass()"></button>' +
                 '</label>' +
-                '<button class="filter-bar-cancel button button-clear" ng-bind-html="::cancelText"></button>' +
+                '<button class="filter-bar-cancel button button-clear" ng-bind-html="config.cancelText"></button>' +
               '</div>' +
             '</div>';
         }
@@ -191,7 +191,8 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
         backdrop: PLATFORM,
         transition: PLATFORM,
         platform: {},
-        placeholder: PLATFORM
+        placeholder: PLATFORM,
+        cancelText: 'Cancel'
       };
 
       createConfig(configProperties, provider, '');
@@ -209,7 +210,8 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
         search: 'ion-ios-search-strong',
         backdrop: true,
         transition: 'vertical',
-        placeholder: 'Search'
+        placeholder: 'Search',
+        cancelText: 'Cancel'
       });
 
       // iOS (it is the default already)
@@ -386,7 +388,8 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
           done: $ionicFilterBarConfig.done(),
           reorder: $ionicFilterBarConfig.reorder(),
           remove: $ionicFilterBarConfig.remove(),
-          add: $ionicFilterBarConfig.add()
+          add: $ionicFilterBarConfig.add(),
+          cancelText: $ionicFilterBarConfig.cancelText()
         };
 
         /**
@@ -432,7 +435,6 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
             comparator: null,
             debounce: true,
             delay: 300,
-            cancelText: 'Cancel',
             cancelOnStateChange: true,
             container: $body,
             favoritesTitle: 'Favorite Searches',
@@ -441,7 +443,6 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
             favoritesKey: 'ionic_filter_bar_favorites',
             filterTextChanged: angular.noop,
             initialFilterText: ''
-
           }, opts);
 
           scope.data = {

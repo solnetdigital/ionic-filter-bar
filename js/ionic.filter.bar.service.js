@@ -73,7 +73,8 @@
           done: $ionicFilterBarConfig.done(),
           reorder: $ionicFilterBarConfig.reorder(),
           remove: $ionicFilterBarConfig.remove(),
-          add: $ionicFilterBarConfig.add()
+          add: $ionicFilterBarConfig.add(),
+          cancelText: $ionicFilterBarConfig.cancelText()
         };
 
         /**
@@ -119,7 +120,6 @@
             comparator: null,
             debounce: true,
             delay: 300,
-            cancelText: 'Cancel',
             cancelOnStateChange: true,
             container: $body,
             favoritesTitle: 'Favorite Searches',
@@ -128,7 +128,6 @@
             favoritesKey: 'ionic_filter_bar_favorites',
             filterTextChanged: angular.noop,
             initialFilterText: ''
-
           }, opts);
 
           scope.data = {
