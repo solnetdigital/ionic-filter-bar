@@ -23,7 +23,7 @@
           '<ion-reorder-button class="{{::config.reorder}}" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button>' +
         '</ion-item>' +
         '<div class="item item-input">' +
-          '<input type="text" ng-model="newItem.text" placeholder="{{::favoritesAddPlaceholder}}"/>' +
+          '<input type="text" ng-model="newItem.text" placeholder="{{favoritesAddPlaceholder}}"/>' +
           '<button class="button button-icon icon {{::config.add}}" ng-click="addItem(newItem)"></button>' +
         '</div>' +
       '</ion-list>' +
@@ -128,7 +128,7 @@
             favoritesKey: 'ionic_filter_bar_favorites',
             filterTextChanged: angular.noop,
             initialFilterText: ''
-          }, opts);
+          }, angular.extend(templateConfig, opts.config || {}));
 
           scope.data = {
             filterText: scope.initialFilterText
